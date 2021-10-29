@@ -1,4 +1,4 @@
-const usersList = ["Iúri"];
+const usersList = ["Iúri", "Nuno", "Fernando", "Gonçalo"];
 
 //DOM Elements
 const numberLine = document.getElementById("number-line");
@@ -8,11 +8,12 @@ const btnStop = document.getElementById("btn-stop");
 let intervalID;
 let counter;
 
+// EVENTS
 btnRoll.addEventListener("click", () => {
   clearInterval(intervalID);
   intervalID = setInterval(() => {
     numberLine.style.animation = "roll 0.1s linear infinite";
-    counter = Math.round(Math.random() * usersList.length + 1);
+    counter = Math.floor(Math.random() * usersList.length + 1);
     numberLine.innerHTML = counter;
   }, 100);
 });

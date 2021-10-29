@@ -16,9 +16,11 @@ body {
 }
 
 #number-box {
-  width: 100%;
+  width: 20rem;
   height: 10rem;
   position: relative;
+  overflow: hidden;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   margin: 5rem;
