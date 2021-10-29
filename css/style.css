@@ -1,7 +1,7 @@
-@import url("./css/animations.css");
+@import url("./animations.css");
 @font-face {
   font-family: mermaid;
-  src: url("./css/Mermaid1001.ttf");
+  src: url("./Mermaid1001.ttf");
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
 
