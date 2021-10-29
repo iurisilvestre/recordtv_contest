@@ -1,4 +1,4 @@
-const usersList = ["Iúri", "Nuno", "Fernando", "Gonçalo"];
+const PARTICIPANTS = 200;
 
 //DOM Elements
 const numberLine = document.getElementById("number-line");
@@ -13,7 +13,7 @@ btnRoll.addEventListener("click", () => {
   clearInterval(intervalID);
   intervalID = setInterval(() => {
     numberLine.style.animation = "roll 0.1s linear infinite";
-    counter = Math.floor(Math.random() * usersList.length + 1);
+    counter = Math.floor(Math.random() * PARTICIPANTS);
     numberLine.innerHTML = counter;
   }, 100);
 });

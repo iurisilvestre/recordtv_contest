@@ -1,4 +1,16 @@
 @import url("/css/animations.css");
+@font-face {
+  font-family: mermaid;
+  src: url("/css/Mermaid1001.ttf");
+}
+
+:root {
+  --primary-color: #2e2d40;
+  --secondary-color: #bfa473;
+  --primary-light: #4f4973;
+  --primary-dark: #1d1c26;
+  --secondary-punch: #d9a648;
+}
 
 * {
   box-sizing: border-box;
@@ -8,27 +20,57 @@
 }
 
 body {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 10rem;
+  background-image: url("../img/bg");
+  background-repeat: space;
+  background-color: #2e2d40;
+}
+
+h2 {
+  font-family: mermaid;
+  font-size: 3rem;
+  color: white;
+}
+
+.main-box {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 800px;
+  height: 70%;
+  margin-top: 5rem;
+  padding: 3rem;
+  opacity: 0.98;
+  background: radial-gradient(
+    circle,
+    rgba(79, 73, 115, 1) 0%,
+    rgba(23, 22, 38, 1) 100%
+  );
 }
 
 #number-box {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
   width: 20rem;
   height: 10rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
+  opacity: 1;
+  background-color: var(--primary-dark);
+  border: 2px solid var(--secondary-color);
   margin: 5rem;
 }
 
 #number-line {
+  margin: auto;
+  text-align: center;
   position: absolute;
   font-size: 8rem;
+  color: var(--secondary-color);
   /* animation: roll 0.1s linear infinite; */
 }
 
