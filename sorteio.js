@@ -17,7 +17,7 @@ let numArr = [];
 // Functions
 
 const createArray = (numParticipantes) => {
-  if (localStorage.getItem("sorteioRecord") === "") {
+  if (localStorage.getItem("sorteioRecord")) {
     numArr = localStorage.getItem("sorteioRecord");
   } else {
     for (let i = 0; i < numParticipantes; i++) {
@@ -47,6 +47,7 @@ const roll = () => {
     numberLine.style.animation = "roll 0";
     btnRoll.disabled = false;
     boxNumber.style.animation = "fadeWhite 1s";
+    localStorage.setItem("sorteioRecord", numArr);
   }, 2000);
 
   intervalID = setInterval(() => {
