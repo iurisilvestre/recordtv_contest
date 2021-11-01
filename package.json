@@ -1,0 +1,22 @@
+{
+  "name": "recordtv_contest",
+  "version": "1.0.0",
+  "description": "web app animation to choose random number",
+  "main": "sorteio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iurisilvestre/recordtv_contest.git"
+  },
+  "author": "iuri silvestre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iurisilvestre/recordtv_contest/issues"
+  },
+  "homepage": "https://github.com/iurisilvestre/recordtv_contest#readme",
+  "dependencies": {
+    "confetti-js": "0.0.18"
+  }
+}

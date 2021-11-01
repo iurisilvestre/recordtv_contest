@@ -1,3 +1,11 @@
+import ConfettiGenerator from "./node_modules/confetti-js/src/confetti.js";
+
+var confettiSettings = { target: "my-canvas" };
+var confetti = new ConfettiGenerator(confettiSettings);
+confetti.render();
+
+console.log(confetti);
+
 const PARTICIPANTS = 200;
 
 //DOM Elements
@@ -17,6 +25,7 @@ let numArr = [];
 // Functions
 
 const createArray = (numParticipantes) => {
+  // Check if exists any list number in local storage
   if (localStorage.getItem("sorteioRecord")) {
     numArr = JSON.parse(localStorage.getItem("sorteioRecord"));
   } else {
@@ -57,12 +66,14 @@ const roll = () => {
   }, 50);
 };
 
-// EVENTS
-
 createArray(PARTICIPANTS);
 
+// EVENTS
+
 btnRoll.addEventListener("click", roll);
+
 resetBtn.addEventListener("click", () => {
   localStorage.removeItem("sorteioRecord");
   createArray(PARTICIPANTS);
+  console.log("numArr reseted");
 });

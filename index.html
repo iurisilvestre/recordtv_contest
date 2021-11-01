@@ -9,6 +9,7 @@
   </head>
   <body>
     <section class="main-box">
+      <canvas id="my-canvas"></canvas>
       <h2 class="title">SORTEIO AMÉRICAS NO AR</h2>
       <div id="number-box">
         <p id="number-line">0</p>
@@ -21,6 +22,10 @@
       />
       <div id="reset"></div>
     </section>
-    <script src="sorteio.js"></script>
+    <script
+      type="module"
+      src="node_modules/confetti-js/dist/index.min.js"
+    ></script>
+    <script type="module" src="sorteio.js"></script>
   </body>
 </html>
