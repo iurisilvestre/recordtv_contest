@@ -18,12 +18,12 @@ let numArr = [];
 
 const createArray = (numParticipantes) => {
   if (localStorage.getItem("sorteioRecord")) {
-    numArr = localStorage.getItem("sorteioRecord");
+    numArr = JSON.parse(localStorage.getItem("sorteioRecord"));
   } else {
     for (let i = 0; i < numParticipantes; i++) {
       numArr[i] = i + 1;
     }
-    localStorage.setItem("sorteioRecord", numArr);
+    localStorage.setItem("sorteioRecord", JSON.stringify(numArr));
   }
   console.log(numArr);
 };
@@ -47,7 +47,7 @@ const roll = () => {
     numberLine.style.animation = "roll 0";
     btnRoll.disabled = false;
     boxNumber.style.animation = "fadeWhite 1s";
-    localStorage.setItem("sorteioRecord", numArr);
+    localStorage.setItem("sorteioRecord", JSON.stringify(numArr));
   }, 2000);
 
   intervalID = setInterval(() => {
