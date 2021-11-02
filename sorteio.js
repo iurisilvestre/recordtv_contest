@@ -1,10 +1,8 @@
 import ConfettiGenerator from "./node_modules/confetti-js/src/confetti.js";
 
-var confettiSettings = { target: "my-canvas" };
+var confettiSettings = { target: "my-canvas", animate: true };
 var confetti = new ConfettiGenerator(confettiSettings);
 confetti.render();
-
-console.log(confetti);
 
 const PARTICIPANTS = 200;
 
@@ -13,10 +11,10 @@ const numberLine = document.getElementById("number-line");
 const btnRoll = document.getElementById("btn-roll");
 const boxNumber = document.getElementById("number-box");
 const resetBtn = document.getElementById("reset");
+const confettisCanva = document.getElementById("my-canvas");
 
 //Globals
 let intervalID;
-let counter;
 let randomNum;
 let numArr = [];
 
@@ -42,6 +40,7 @@ const createRandomNum = () => {
 };
 
 const roll = () => {
+  confettisCanva.classList.add("hidden");
   if (numArr.length == 0) {
     return;
   }
@@ -54,6 +53,7 @@ const roll = () => {
     numArr.splice(randomNum, 1);
     console.log(numArr);
     numberLine.style.animation = "roll 0";
+    confettisCanva.classList.remove("hidden");
     btnRoll.disabled = false;
     boxNumber.style.animation = "fadeWhite 1s";
     localStorage.setItem("sorteioRecord", JSON.stringify(numArr));

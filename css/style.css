@@ -31,6 +31,10 @@ body {
   background-color: #2e2d40;
 }
 
+#my-canvas {
+  position: absolute;
+}
+
 .title {
   font-family: mermaid;
   font-size: 2.5rem;
@@ -102,6 +106,7 @@ body {
   border: none;
   transition: transform 0.2s ease-in-out;
   font-size: 1.2rem;
+  z-index: 1;
 }
 .btn:hover {
   cursor: pointer;
@@ -121,4 +126,9 @@ body {
   border-radius: 50%;
   background-color: var(--secondary-color);
   cursor: pointer;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
 }
