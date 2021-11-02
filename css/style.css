@@ -36,7 +36,7 @@ body {
 
 .title {
   font-family: mermaid;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
   letter-spacing: 5px;
   margin-top: 1.5rem;
@@ -57,6 +57,18 @@ body {
   width: 70%;
   margin: 0.2em auto;
   border-top: 2px solid var(--secondary-color);
+}
+
+#sub-title {
+  text-transform: uppercase;
+  margin-top: 1rem;
+  color: var(--secondary-color);
+  transition: font-size ease-in-out 0.3s;
+  z-index: 1;
+}
+
+.sub-title-win {
+  font-size: 2rem;
 }
 
 .main-box {
@@ -85,7 +97,7 @@ body {
   overflow: hidden;
   background-color: var(--primary-dark);
   border: 2px solid var(--secondary-color);
-  margin: 2rem;
+  margin: 1.5rem;
   /* animation: fadeWhite 1s; */
 }
 
@@ -132,7 +144,7 @@ body {
   display: none;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 750px) {
   .title {
     font-size: 1.5rem;
   }
