@@ -26,12 +26,15 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-image: url("../img/bg");
+  background-image: url("../img/bg.jpg");
   background-repeat: space;
+  overflow: hidden;
 }
 
 #my-canvas {
   position: absolute;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .title {
@@ -39,14 +42,13 @@ body {
   font-size: 2.5rem;
   color: white;
   letter-spacing: 5px;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .title::before {
   content: "";
   display: block;
   height: 0.4em;
-  width: 100%;
   width: 70%;
   margin: 0 auto;
   border-top: 2px solid var(--secondary-color);
@@ -72,11 +74,12 @@ body {
 }
 
 .main-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 800px;
-  height: 600px;
+  width: 1200px;
+  height: 650px;
   margin: 2rem;
   padding: 2rem;
   background: radial-gradient(
@@ -84,6 +87,7 @@ body {
     rgba(79, 73, 115, 1) 0%,
     rgba(23, 22, 38, 1) 100%
   );
+  z-index: 0;
 }
 
 #number-box {
@@ -92,12 +96,12 @@ body {
   align-items: center;
   padding: 0.5rem;
   width: 25rem;
-  min-height: 10rem;
+  height: 12rem;
   position: relative;
   overflow: hidden;
   background-color: var(--primary-dark);
   border: 2px solid var(--secondary-color);
-  margin: 1.5rem;
+  margin-top: 3rem;
   /* animation: fadeWhite 1s; */
 }
 
@@ -112,12 +116,12 @@ body {
   width: 14rem;
   height: 3rem;
   background-color: var(--secondary-color);
-  margin: 0.5rem;
+  margin: 2rem 1rem;
   color: var(--primary-dark);
   border: none;
   transition: transform 0.2s ease-in-out;
   font-size: 1.2rem;
-  z-index: 1;
+  z-index: 10;
 }
 .btn:hover {
   cursor: pointer;
@@ -131,7 +135,8 @@ body {
 }
 
 #reset {
-  margin-top: 1rem;
+  position: absolute;
+  bottom: 2rem;
   width: 10px;
   height: 10px;
   border-radius: 50%;

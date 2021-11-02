@@ -18,8 +18,6 @@ let intervalID;
 let randomNum;
 let numArr = [];
 
-// Creating Array of numbers
-
 // Functions
 
 const createArray = (numParticipantes) => {
@@ -65,7 +63,7 @@ const roll = () => {
     subTitle.innerHTML = "parabéns ao vencedor!";
     subTitle.classList.add("sub-title-win");
     localStorage.setItem("sorteioRecord", JSON.stringify(numArr));
-  }, 2000);
+  }, 3000);
 
   intervalID = setInterval(() => {
     numberLine.style.animation = "roll 0.1s linear infinite";
@@ -76,6 +74,7 @@ const roll = () => {
 
 // START FUNCTIONS
 confetti.render();
+// Creating Array of numbers
 createArray(PARTICIPANTS);
 
 // EVENTS
@@ -83,10 +82,10 @@ createArray(PARTICIPANTS);
 btnRoll.addEventListener("click", roll);
 
 resetBtn.addEventListener("click", () => {
-  localStorage.removeItem("sorteioRecord");
-  createArray(PARTICIPANTS);
   numberLine.innerHTML = "0";
   subTitleReset();
   confettisCanva.classList.add("hidden");
+  localStorage.removeItem("sorteioRecord");
+  location.reload();
   console.log("Number's list reseted");
 });
