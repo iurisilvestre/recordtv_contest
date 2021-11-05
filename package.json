@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iurisilvestre/recordtv_contest#readme",
   "dependencies": {
-    "confetti-js": "0.0.18"
+    "confetti-js": "0.0.18",
+    "read-excel-file": "^5.2.20"
   }
 }

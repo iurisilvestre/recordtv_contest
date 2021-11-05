@@ -1,9 +1,8 @@
 import ConfettiGenerator from "./node_modules/confetti-js/src/confetti.js";
 
+// CONFETTI GENERATOR
 var confettiSettings = { target: "my-canvas", animate: true };
 var confetti = new ConfettiGenerator(confettiSettings);
-
-const PARTICIPANTS = 200;
 
 //DOM Elements
 const numberLine = document.getElementById("number-line");
@@ -12,29 +11,24 @@ const boxNumber = document.getElementById("number-box");
 const resetBtn = document.getElementById("reset");
 const confettisCanva = document.getElementById("my-canvas");
 const subTitle = document.getElementById("sub-title");
+const input = document.getElementById("input");
 
 //Globals
+let participantsList = [];
 let intervalID;
 let randomNum;
-let numArr = [];
+
+// START PAGE
+confetti.render();
+if (localStorage.getItem("sorteioRecord")) {
+  participantsList = JSON.parse(localStorage.getItem("sorteioRecord"));
+  console.log(participantsList);
+}
 
 // Functions
 
-const createArray = (numParticipantes) => {
-  // Check if exists any list number in local storage
-  if (localStorage.getItem("sorteioRecord")) {
-    numArr = JSON.parse(localStorage.getItem("sorteioRecord"));
-  } else {
-    for (let i = 0; i < numParticipantes; i++) {
-      numArr[i] = i + 1;
-    }
-    localStorage.setItem("sorteioRecord", JSON.stringify(numArr));
-  }
-  console.log(numArr);
-};
-
-const createRandomNum = () => {
-  return Math.floor(Math.random() * numArr.length);
+const createRandomNum = (array) => {
+  return Math.floor(Math.random() * array.length);
 };
 
 const subTitleReset = () => {
@@ -45,7 +39,7 @@ const subTitleReset = () => {
 const roll = () => {
   confettisCanva.classList.add("hidden");
   subTitleReset();
-  if (numArr.length == 0) {
+  if (participantsList.length == 0) {
     return;
   }
   btnRoll.disabled = true;
@@ -54,28 +48,23 @@ const roll = () => {
 
   setTimeout(() => {
     clearInterval(intervalID);
-    numArr.splice(randomNum, 1);
-    console.log(numArr);
+    participantsList.splice(randomNum, 1);
+    console.log(participantsList);
     numberLine.style.animation = "roll 0";
     confettisCanva.classList.remove("hidden");
     btnRoll.disabled = false;
     boxNumber.style.animation = "fadeWhite 1s";
     subTitle.innerHTML = "parabéns ao vencedor!";
     subTitle.classList.add("sub-title-win");
-    localStorage.setItem("sorteioRecord", JSON.stringify(numArr));
+    localStorage.setItem("sorteioRecord", JSON.stringify(participantsList));
   }, 3000);
 
   intervalID = setInterval(() => {
     numberLine.style.animation = "roll 0.1s linear infinite";
-    randomNum = createRandomNum();
-    numberLine.innerHTML = numArr[randomNum];
+    randomNum = createRandomNum(participantsList);
+    numberLine.innerHTML = participantsList[randomNum];
   }, 50);
 };
-
-// START FUNCTIONS
-confetti.render();
-// Creating Array of numbers
-createArray(PARTICIPANTS);
 
 // EVENTS
 
@@ -88,4 +77,18 @@ resetBtn.addEventListener("click", () => {
   localStorage.removeItem("sorteioRecord");
   location.reload();
   console.log("Number's list reseted");
+});
+
+// Read XLS FILE AND CREATE PARTICiPANTS LIST
+input.addEventListener("change", () => {
+  readXlsxFile(input.files[0])
+    .then((data) => {
+      data.map((item) => {
+        participantsList.push(item[0]);
+      });
+    })
+    .then(() => {
+      localStorage.setItem("sorteioRecord", JSON.stringify(participantsList));
+      console.log(participantsList);
+    });
 });
