@@ -134,18 +134,26 @@ body {
   width: 4rem;
 }
 
-#reset {
-  position: absolute;
-  bottom: 2rem;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--secondary-color);
-  cursor: pointer;
+.icons {
+  display: flex;
+  color: var(--secondary-color);
   z-index: 1;
+  margin: 10px;
+}
+
+.icons i {
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.icons i:hover {
+  color: var(--secondary-punch);
 }
 
 .hidden {
+  display: none;
+}
+
+#input[type="file"] {
   display: none;
 }
 

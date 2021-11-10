@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorteio Record TV</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <canvas class="hidden" id="my-canvas"></canvas>
@@ -16,8 +22,13 @@
       </div>
       <h3 id="sub-title">Boa sorte!</h3>
       <button class="btn" id="btn-roll">SORTEAR</button>
-      <input type="file" id="input" />
-      <div id="reset"></div>
+      <div class="icons">
+        <label for="input" class="label-input">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </label>
+        <input type="file" id="input" />
+        <i id="reset" class="fas fa-undo-alt"></i>
+      </div>
     </section>
     <script
       type="module"
