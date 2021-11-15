@@ -136,7 +136,7 @@ body {
 
 .icons {
   display: flex;
-  color: var(--secondary-color);
+  color: var(--primary-dark);
   z-index: 1;
   margin: 10px;
 }
@@ -155,6 +155,10 @@ body {
 
 #input[type="file"] {
   display: none;
+}
+
+.highlight {
+  color: var(--secondary-color);
 }
 
 @media (max-width: 750px) {

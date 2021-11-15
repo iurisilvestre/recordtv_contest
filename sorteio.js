@@ -12,6 +12,7 @@ const resetBtn = document.getElementById("reset");
 const confettisCanva = document.getElementById("my-canvas");
 const subTitle = document.getElementById("sub-title");
 const input = document.getElementById("input");
+const iconUpload = document.getElementById("iconUpload");
 
 //Globals
 let participantsList = [];
@@ -89,6 +90,7 @@ input.addEventListener("change", () => {
     })
     .then(() => {
       localStorage.setItem("sorteioRecord", JSON.stringify(participantsList));
+      iconUpload.classList.add("highlight");
       console.log(participantsList);
     });
 });
