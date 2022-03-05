@@ -14,6 +14,8 @@ const subTitle = document.getElementById("sub-title");
 const input = document.getElementById("input");
 const iconUpload = document.getElementById("iconUpload");
 
+const PARTICIPANTS = 200;
+
 //Globals
 let participantsList = [];
 let intervalID;
@@ -23,7 +25,11 @@ let randomNum;
 confetti.render();
 if (localStorage.getItem("sorteioRecord")) {
   participantsList = JSON.parse(localStorage.getItem("sorteioRecord"));
-  console.log(participantsList);
+}
+if (participantsList.length == 0) {
+  for (let i = 0; i < PARTICIPANTS; i++) {
+    participantsList.push(i);
+  }
 }
 
 // Functions
@@ -40,9 +46,7 @@ const subTitleReset = () => {
 const roll = () => {
   confettisCanva.classList.add("hidden");
   subTitleReset();
-  if (participantsList.length == 0) {
-    return;
-  }
+
   btnRoll.disabled = true;
   clearInterval(intervalID);
   boxNumber.style.animation = "";
@@ -50,7 +54,6 @@ const roll = () => {
   setTimeout(() => {
     clearInterval(intervalID);
     participantsList.splice(randomNum, 1);
-    console.log(participantsList);
     numberLine.style.animation = "roll 0";
     confettisCanva.classList.remove("hidden");
     btnRoll.disabled = false;
@@ -82,6 +85,7 @@ resetBtn.addEventListener("click", () => {
 
 // Read XLS FILE AND CREATE PARTICiPANTS LIST
 input.addEventListener("change", () => {
+  participantsList.length = 0;
   readXlsxFile(input.files[0])
     .then((data) => {
       data.map((item) => {
@@ -91,6 +95,5 @@ input.addEventListener("change", () => {
     .then(() => {
       localStorage.setItem("sorteioRecord", JSON.stringify(participantsList));
       iconUpload.classList.add("highlight");
-      console.log(participantsList);
     });
 });
