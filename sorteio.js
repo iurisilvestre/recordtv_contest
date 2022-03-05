@@ -25,8 +25,7 @@ let randomNum;
 confetti.render();
 if (localStorage.getItem("sorteioRecord")) {
   participantsList = JSON.parse(localStorage.getItem("sorteioRecord"));
-}
-if (participantsList.length == 0) {
+} else if (participantsList.length == 0) {
   for (let i = 0; i < PARTICIPANTS; i++) {
     participantsList.push(i);
   }
